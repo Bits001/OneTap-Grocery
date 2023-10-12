@@ -26,5 +26,6 @@ class AdBanner {
 
   factory AdBanner.fromJson(Map<String, dynamic> data) => AdBanner(
       id: data['id'],
-      image: data['attributes']['image']['data']['attributes']['url']);
+        image: data['attributes']['image']['data']['attributes']['url'],
+      );
 }

@@ -11,8 +11,9 @@ List<Product> popularProductFromJson(String value) => List<Product>.from(
           .map((value) => Product.popularProductFromJson(value)),
     );
 
-List<Product> productListFromJson(String value) => List<Product>.from(
-      json.decode(value)['data'].map((value) => Product.productFromJson(value)),
+
+List<Product> productListFromJson(String val) => List<Product>.from(
+    json.decode(val)['data'].map((val) => Product.productFromJson(val))
     );
 
 @HiveType(typeId: 3)

@@ -48,7 +48,7 @@ class PopularCategoryCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -59,7 +59,7 @@ class PopularCategoryCard extends StatelessWidget {
                   category.name,
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                   maxLines: 1,
                 ),
