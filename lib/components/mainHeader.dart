@@ -1,5 +1,7 @@
+import 'package:ecommerce_app/controller/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class MainHeader extends StatelessWidget {
   const MainHeader({super.key});
@@ -20,41 +22,58 @@ class MainHeader extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(24),
-                ),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.6),
-                    offset: const Offset(0, 0),
-                    blurRadius: 8,
-                  )
-                ],
+              child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(24),
               ),
-              child: TextField(
-                autofocus: false,
-                onSubmitted: (value) {},
-                onChanged: (value) {},
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 16,
-                  ),
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(24),
-                    borderSide: BorderSide.none,
-                  ),
-                  hintText: "Search",
-                  prefixIcon: const Icon(Icons.search),
-                ),
-              ),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.6),
+                  offset: const Offset(0, 0),
+                  blurRadius: 8,
+                )
+              ],
             ),
-          ),
+            child: Obx(() => TextField(
+                  autofocus: false,
+                  controller: productController.searchTextEditingController,
+                  onSubmitted: (value) {
+                    productController.getProductByName(keyword: value);
+                    dashboardController.updateIndex(1);
+                  },
+                  onChanged: (value) {
+                    productController.searchVal.value = value;
+                  },
+                  decoration: InputDecoration(
+                    suffixIcon: productController.searchVal.value.isNotEmpty
+                        ? IconButton(
+                            onPressed: () {
+                              FocusScope.of(context).requestFocus(FocusNode());
+                              productController.searchTextEditingController
+                                  .clear();
+                              productController.searchVal.value = '';
+                              productController.getProducts();
+                            },
+                            icon: const Icon(Icons.clear),
+                          )
+                        : null,
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 16,
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(24),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: "Search",
+                    prefixIcon: const Icon(Icons.search),
+                  ),
+                )),
+          )),
           const SizedBox(
             width: 10,
           ),

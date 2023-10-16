@@ -1,9 +1,12 @@
 import 'package:ecommerce_app/controller/dashboard_controller.dart';
+import 'package:ecommerce_app/view/category/category_screen.dart';
 import 'package:ecommerce_app/view/home/homeScreen.dart';
 import 'package:ecommerce_app/view/product/productScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+
+import '../account/account_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -16,18 +19,11 @@ class DashboardScreen extends StatelessWidget {
         body: SafeArea(
           child: IndexedStack(
             index: controller.tabIndex,
-            children: [
-              const HomeScreen(),
-              const ProductScreen(),
-              Container(
-                color: Colors.red,
-              ),
-              Container(
-                color: Colors.blue,
-              ),
-              Container(
-                color: Colors.orange,
-              ),
+            children: const [
+              HomeScreen(),
+              ProductScreen(),
+              CategoryScreen(),
+              AccountScreen()
             ],
           ),
         ),

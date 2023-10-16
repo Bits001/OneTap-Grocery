@@ -15,13 +15,31 @@ class ProductScreen extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          MainHeader(),
+          const MainHeader(),
           Expanded(child: Obx(
             () {
-              if (productController.productList.isNotEmpty) {
-                return ProductGrid(products: productController.productList);
-              } else {
+              if (productController.isProductLoading.value) {
                 return const ProductLoadingGrid();
+              } else {
+                if (productController.productList.isNotEmpty) {
+                  return ProductGrid(products: productController.productList);
+                } else {
+                  return Column(
+                    children: [
+                      Image.asset('assets/NotFound.png'),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text(
+                        'Not Found',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )
+                    ],
+                  );
+                }
               }
             },
           ))

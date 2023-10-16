@@ -14,6 +14,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -73,14 +74,13 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text(
-                        product.description,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey,
-                        ),
+                    Text(
+                      product.tags.isNotEmpty
+                          ? '\PHP${product.tags.first.price.toStringAsFixed(2)}'
+                          : 'No Price Available', // Handle the case when the list is empty
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
                       ),
                     ),
                   ],

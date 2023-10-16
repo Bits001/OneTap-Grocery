@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/view/home/components/popular_product/popularProduct_card.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../model/product.dart';

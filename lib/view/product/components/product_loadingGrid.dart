@@ -1,8 +1,7 @@
 import 'package:ecommerce_app/view/home/components/popular_product/popularProduct_loadingCard.dart';
 import 'package:flutter/material.dart';
 
-import '../../../model/product.dart';
-import 'productCard.dart';
+
 
 class ProductLoadingGrid extends StatelessWidget {
   const ProductLoadingGrid({super.key});
