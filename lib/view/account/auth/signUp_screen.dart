@@ -35,20 +35,40 @@ class SignUpScreen extends StatelessWidget {
                 "Create an Account",
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 26,
+                  fontSize: 36,
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
-              const Text(
-                "Sign up to get started",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.5,
-                ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    "Sign up to get",
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                  Text(
+                    " started",
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.redAccent,
+                    ),
+                  ),
+                ],
               ),
+              // const Text(
+              //   "Sign up ",
+
+              //   style: TextStyle(
+              //     color: Colors.grey,
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.w600,
+              //     letterSpacing: 1.5,
+              //   ),
+              // ),
+
+
               const Spacer(
                 flex: 1,
               ),
