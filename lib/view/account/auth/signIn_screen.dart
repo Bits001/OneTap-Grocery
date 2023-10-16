@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/components/input_textButton.dart';
 import 'package:ecommerce_app/components/input_textField.dart';
+import 'package:ecommerce_app/view/account/auth/signUp_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +20,13 @@ class SignInScreen extends StatelessWidget {
             const Spacer(
               flex: 1,
             ),
-            const Icon(
-              Icons.arrow_back_rounded,
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(
+                Icons.arrow_back_rounded,
+              ),
             ),
             const Spacer(),
             const Text(
@@ -43,7 +49,9 @@ class SignInScreen extends StatelessWidget {
             const Spacer(
               flex: 1,
             ),
-            const InputTextField(title: 'Email address'),
+            const InputTextField(
+              title: 'Email address',
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -72,14 +80,21 @@ class SignInScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Row(
+            Row(
               //mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "Don't have an account?",
+                const Text(
+                  "Don't have an account? ",
                 ),
                 InkWell(
-                  child: Text(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ));
+                  },
+                  child: const Text(
                     "Sign up",
                     style: TextStyle(
                       color: Colors.blueAccent,
